@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmduruo.dao.MoveAndCsvMapper" >
+  <resultMap id="BaseResultMap" type="com.xmduruo.po.MoveAndCsv" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="MP4_NAME" property="mp4Name" jdbcType="VARCHAR" />
+    <result column="CSV_NAME" property="csvName" jdbcType="VARCHAR" />
+    <result column="MP4_PATH" property="mp4Path" jdbcType="VARCHAR" />
+    <result column="CSV_PATH" property="csvPath" jdbcType="VARCHAR" />
+  </resultMap>
+  <!--String mp4Name,String csvName,String mp4Path,String csvPath-->
+  <sql id="Base_Column_List" >
+    ID, MP4_NAME,CSV_NAME,MP4_PATH,CSV_PATH
+  </sql>
+  <insert id="add" parameterType="com.xmduruo.po.MoveAndCsv">
+     insert into moveandcsv (MP4_NAME,CSV_NAME,MP4_PATH,CSV_PATH)
+    values ( #{mp4Name,jdbcType=VARCHAR}, #{csvName,jdbcType=VARCHAR}, #{mp4Path,jdbcType=VARCHAR},#{csvPath,jdbcType=VARCHAR})
+  </insert>
+  <select id="getAll" resultMap="BaseResultMap" parameterType="map">
+    select <include refid="Base_Column_List"/>
+    from moveandcsv
+  </select>
+
+
+</mapper>

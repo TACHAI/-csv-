@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+
+    <title>修正数据</title>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="./assets/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="./assets/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="./assets/css/animate.css" rel="stylesheet">
+    <link href="./assets/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="./assets/css/style.css?v=4.1.0" rel="stylesheet">
+</head>
+<body class="gray-bg top-navigation">
+
+<div id="wrapper" >
+    <div id="page-wrapper" class="gray-bg">
+        <div class="wrapper wrapper-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>csv资源</h5>
+                            </div>
+
+                            <div class="ibox-content">
+                                <form>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">文件名</span>
+                                            <input type="text" placeholder="文件名" class="input-sm form-control" name="name" id="name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="input-group row">
+                                            <span class="input-group-addon">起始时间</span>
+                                            <!--<input type="tel"  placeholder="hh" maxlength="2"  class="input-sm form-control" name="shh" id="shh" required>-->
+                                            <input type="tel"  placeholder="mm" maxlength="2" class="input-sm form-control" name="smm" id="smm" >
+                                            <input type="tel"  placeholder="ss" maxlength="2" class="input-sm form-control" name="sss" id="sss" >
+                                            <!--<input type="tel"  placeholder="SSS" maxlength="3" class="input-sm form-control" name="sSSS" id="sSSS" required>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="input-group row" >
+                                            <span class="input-group-addon">结束时间</span>
+                                            <!--<input type="tel"  placeholder="hh" maxlength="2" class="input-sm form-control" name="ehh" id="ehh" required>-->
+                                            <input type="tel"  placeholder="mm" maxlength="2" class="input-sm form-control" name="emm" id="emm" >
+                                            <input type="tel"  placeholder="ss" maxlength="2" class="input-sm form-control" name="ess" id="ess" >
+                                            <!--<input type="tel"  placeholder="SSS" maxlength="3" class="input-sm form-control" name="eSSS" id="eSSS" required>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">修改前</span>
+                                            <input type="number" placeholder="数值A" class="input-sm form-control" name="a" id="a" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">修改后</span>
+                                            <input type="number" placeholder="数值B" class="input-sm form-control" name="b" id="b" required>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="row"  >
+                                    <div align="left">
+                                        <button type="submit" id="button" class="btn btn-primary btn-lg" align="left">修改</button>
+                                    </div>
+                                </div>
+                                </form>
+                                <div class="table-responsive">
+                                    <table
+                                            id="mp4Andcsv"
+                                            data-toggle="table"
+                                            data-query-params="queryParams"
+                                            data-mobile-responsive="true"
+                                            data-pagination="true"
+                                            data-icon-size="outline"
+                                            data-search="false"
+                                            data-striped="true"
+                                            data-page-size="5"
+                                            data-page-number="1"
+                                            data-page-list="[1, 5, 10, 15, 20, 25]">
+                                        <!--data-search="true">-->
+                                        <thead>
+                                        <tr>
+                                            <!--<th data-field="state" data-checkbox="true"></th>-->
+                                            <th data-field="id" data-visible="false">编号</th>
+                                            <th data-field="mp4Name"  data-formatter="edit">视频名字（点击下载）</th>
+                                            <th data-field="csvName"  data-formatter="edit1">csv名字（点击下载）</th>
+                                            <th data-field="mp4Path">视频路径</th>
+                                            <th data-field="csvPath">csv路径</th>
+                                            <!--<th data-field="operate"  data-formatter="edit">操作</th>-->
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 全局js -->
+<script src="./assets/js/jquery.min.js?v=2.1.4"></script>
+<script src="./assets/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="./assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="./assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="./assets/js/plugins/layer/layer.min.js"></script>
+<!-- 自定义js -->
+<!--<script src="./assets/js/content.js?v=1.0.0"></script>-->
+<script src="./assets/js/hplus.js?v=4.1.0"></script>
+<!-- Bootstrap table -->
+<script src="./assets/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="./assets/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="./assets/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+
+<!-- Peity -->
+<script src="./assets/js/demo/bootstrap-table-demo.js"></script>
+
+</body>
+<script type="text/javascript">
+    $("document").ready(function () {
+        var url = "http://139.219.141.192:8089/mc/getAll";
+        url=encodeURI(encodeURI(url));//对URL的地址进行两次encodeURI编码，实际上只有中文的部分被修改编码
+        console.info(url+"编码后的url")
+        //先销毁表格
+        $('#mp4Andcsv').bootstrapTable('destroy');
+        //初始化表格,动态从服务器加载数据
+        $("#mp4Andcsv").bootstrapTable({
+            method: "get",  //使用get请求到服务器获取数据
+            url: url,
+        });
+    })
+    //修改按钮点击事件
+    $("#button").click(function () {
+        var name=document.getElementById("name").value;
+        var starTime=parseInt(document.getElementById("smm").value*600)+parseInt(document.getElementById("sss").value*10);
+        var endTime=parseInt(document.getElementById("emm").value*600)+parseInt(document.getElementById("ess").value*10);
+        console.info(starTime)
+        console.info(endTime)
+        var a=document.getElementById("a").value;
+        var b=document.getElementById("b").value;
+
+        if (name.length == 0) {
+            alert('文件名不能为空');
+            return false;
+        }
+        if (a.length == 0) {
+            alert('修改前的值不能为空');
+            return false;
+        }
+        if (b.length == 0) {
+            alert('修改后的值不能为空');
+            return false;
+        }
+        $.ajax({
+            type:'post',
+            url:'http://139.219.141.192:8089/mc/modifybytime',
+            data:{'name':name,'startTime':starTime,'endTime':endTime,'a':a,'b':b},
+            dataType:'json',
+            success:function (data) {
+                if(data.status==0){
+//                    var timeout=setTimeout(function () {
+//                        alert(data.msg);
+//                    }, 800);
+                    alert(data.msg);
+                }
+            },
+            error:function (data) {
+               console.info(data);
+                alert("发生了错误");
+            }
+        })
+        return false;
+    })
+
+    //table初始化的时候把按钮插入
+    function edit (value, row, index) {
+        var a = '<a href=\'' + row.mp4Path + '\' download=\'' + row.mp4Name + '\'>' + row.mp4Name + '</a>';
+        return a;
+    }
+    function edit1 (value, row, index) {
+        var b = '<a onclick="viewOnlineEvidence(\''+row.csvName+'\')">'+row.csvName+'</a>';
+//        alert(b);
+        return b ;
+    }
+
+//    function edit1 (value, row, index) {
+//        var b = '<a href=\''+row.csvPath+'\' download=\''+row.csvName+'.csv'+'\'>'+row.csvName+'</a>';
+//        return b ;
+//    }
+    function viewOnlineEvidence(name) {
+        window.location.href="mc/downloadfile?name="+name;
+    }
+</script>
+</html>

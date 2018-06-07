@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 778209
+    url: jdbc:mysql://localhost:3306/mandc?characterEncoding=utf-8
+#  jpa:
+#    show-sql: true
+  jackson:
+    default-property-inclusion: non_null
+#  redis:
+#    host: 182.132.212.123
+#    port: 66080
+server:
+  context-path:  /modifyCsv
+#logging:
+#  pattern:
+#    console: "%d - %msg%n"
+## path: /var/log/tomcat/
+#  file: /var/log/tomcat/sell.log
+##  level:
+##    com.laohu.***
+#  level: debug
+
+logging:
+  level:
+    package com.laohu.dataobject.mapper: trace
+mybatis:
+  typeAliasesPackage: com.xmduruo.po
+  mapper-locations: classpath:mappers/*.xml
+
