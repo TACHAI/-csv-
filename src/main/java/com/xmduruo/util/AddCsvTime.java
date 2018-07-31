@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.TimeZone;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
@@ -21,14 +23,15 @@ import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
  */
 public class AddCsvTime {
 
-    public void addTime() {
-        String path = Class.class.getClass().getResource("/").getPath();
+    public static void addTime(String name) {
+//        String path = Class.class.getClass().getResource("/").getPath();
 //        System.out.println(path);
+        String path="/usr/java/modifyCsv_jar/file/";
         log.println(path);
-        String filePath = Class.class.getClass().getResource("/").getPath() + "/static/assets/file/right.csv";
+        String filePath = path+name;
         //String filePath=System.getProperty("user.dir")+"/src/main/resources/static/assets/file/right.csv";
 
-        String endFilePath = Class.class.getClass().getResource("/").getPath() + "/static/assets/file/endRight.csv";
+        String endFilePath =path+"temp2.csv";
         //String endFilePath=System.getProperty("user.dir")+"/src/main/resources/static/assets/file/endRight.csv";
 //        System.out.println(filePath);
 //        System.out.println(endFilePath);
@@ -71,22 +74,24 @@ public class AddCsvTime {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         } finally {
-            getError(csvReader, csvWriter);
+            AddCsvTime.getError(csvReader, csvWriter);
         }
         //修改文件名
-        changeFileName(filePath, endFilePath);
+        AddCsvTime.changeFileName(filePath, endFilePath);
     }
 
 
-    public void modifyAtoB(String name, String startTime, String endTime, int a, int b) {
+    public static void modifyAtoB(String name, String startTime, String endTime, int a, int b) {
 //windows中 target路径
 //        String path = Class.class.getClass().getResource("/").getPath() + "static/assets/file/";
 //        System.out.println(path);
 //        服务器中文件存放的路径
+         Lock lock = new ReentrantLock();
+       lock.lock();
         String path="/usr/java/modifyCsv_jar/file/";
-        String filePath = path + name + ".csv";
+        String filePath = path + name;
         //String filePath=System.getProperty("user.dir")+"/src/main/resources/static/assets/file/right.csv";
-        File file = new File(path, name + "Temp.csv");
+        File file = new File(path,  "Temp.csv");
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -95,7 +100,7 @@ public class AddCsvTime {
                 e.printStackTrace();
             }
         }
-        String endFilePath = path + name + "Temp.csv";
+        String endFilePath = path + "Temp.csv";
 //        String endFilePath=Class.class.getClass().getResource("/").getPath() + "static/assets/file/endRight.csv";
 
         String[] stringList;
@@ -129,10 +134,11 @@ public class AddCsvTime {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         } finally {
-            getError(csvReader, csvWriter);
+            AddCsvTime.getError(csvReader, csvWriter);
         }
         //修改文件名
-        changeFileName(filePath, endFilePath);
+        AddCsvTime.changeFileName(filePath, endFilePath);
+        lock.unlock();
     }
 
     /**
@@ -141,9 +147,9 @@ public class AddCsvTime {
      * @param path1
      * @param path2
      */
-    public void changeFileName(String path1, String path2) {
+    public static void changeFileName(String path1, String path2) {
         //先删除目标文件
-        delFile(path1);
+        AddCsvTime.delFile(path1);
 
         FileWriter fw = null;
         FileReader fr = null;
@@ -176,19 +182,28 @@ public class AddCsvTime {
             }
         }
         //删除临时文件
-        delFile(path2);
+        AddCsvTime.delFile(path2);
     }
 
     //删除文件
-    public void delFile(String path) {
+
+    /**
+     * 删除路径为path的文件
+     * @param path
+     */
+    public static void delFile(String path) {
         File f = new File(path);
         if (f.delete()) {
             System.out.println("删除文件" + f + "成功！");
         }
     }
 
-    // try-catch csv文件流里面的错误
-    public void getError(CsvReader csvReader,
+    /**
+     * try-catch csv文件流里面的错误
+     * @param csvReader
+     * @param csvWriter
+     */
+    public static void getError(CsvReader csvReader,
                          CsvWriter csvWriter) {
         if (csvReader != null) {
             csvReader.close();

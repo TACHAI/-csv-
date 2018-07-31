@@ -4,6 +4,8 @@
 var flag=true;
 var temp=true;
 var cusName;
+var baseUrl='http://localhost:8089';
+// var baseUrl='http://can.xmduruo.com:8089';
 function TimestampToDate(Timestamp) {
     var date = new Date(Timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
     Y = date.getFullYear() + '-';

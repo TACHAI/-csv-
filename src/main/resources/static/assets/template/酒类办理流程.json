@@ -1,0 +1,545 @@
+﻿{
+    "edit": "2",
+    "type": "tasks",
+    "data": {
+        "taskName": "酒类办理流程",
+        "matchs": {},
+        "processes": [],
+        "startUp": [
+            "我想卖酒",
+            "我要卖酒",
+            "我计划卖酒"
+        ],
+        "understand_default": [
+            "这个我还不太清楚呢，您可以输入“是”、“否”告知我您的意图。",
+            "我还很年轻，还有很多事不懂，不过我记住了会继续学习的。",
+            "现在就去啃书了，等我学会了再来和你唠唠。"
+        ],
+        "finished_default": [
+            "感谢您的使用，祝您生活愉快！"
+        ],
+        "tasks": {
+            "id": 1,
+            "name": "酒类办理流程",
+            "state": "wait",
+            "type": "multi",
+            "answer": [
+                {
+                    "id": 2,
+                    "name": "前置条件判断食品是否已经办理",
+                    "state": "wait",
+                    "type": "single",
+                    "ask": "您是打算办理酒类商品零售许可证吗？",
+                    "answer": [
+                        {
+                            "id": 5,
+                            "name": "肯定办理酒类零售许可证",
+                            "state": "wait",
+                            "match": [
+                                "是"
+                            ],
+                            "type": "single",
+                            "ask": "好的，请问您是\nA.新办\nB.变更\nC.补证\nD.延续\nE.注销",
+                            "answer": [
+                                {
+                                    "id": 6,
+                                    "name": "新办",
+                                    "type": "multi",
+                                    "state": "wait",
+                                    "match": [
+                                        "A",
+                                        "新办",
+                                        "a"
+                                    ],
+                                    "answer": [
+                                        {
+                                            "id": 38,
+                                            "name": "委托人问题",
+                                            "state": "wait",
+                                            "type": "single",
+                                            "ask": "请问是否委托别人代办",
+                                            "answer": [
+                                                {
+                                                    "id": 39,
+                                                    "relationIds": [
+                                                        48,
+                                                        50
+                                                    ],
+                                                    "name": "需要委托人",
+                                                    "state": "wait",
+                                                    "match": [
+                                                        "是",
+                                                        "委托",
+                                                        "代办"
+                                                    ],
+                                                    "isLeaf": true
+                                                },
+                                                {
+                                                    "id": 40,
+                                                    "relationIds": [
+                                                        44,
+                                                        46
+                                                    ],
+                                                    "name": "不需要委托人",
+                                                    "state": "wait",
+                                                    "match": [
+                                                        "否"
+                                                    ],
+                                                    "isLeaf": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 41,
+                                            "name": "场地问题",
+                                            "state": "wait",
+                                            "type": "single",
+                                            "ask": "请问您的经营场所是\nA.自有\nB.租赁",
+                                            "answer": [
+                                                {
+                                                    "id": 42,
+                                                    "relationIds": [
+                                                        46,
+                                                        50
+                                                    ],
+                                                    "name": "自有场地",
+                                                    "state": "wait",
+                                                    "match": [
+                                                        "自有",
+                                                        "A",
+                                                        "a"
+                                                    ],
+                                                    "isLeaf": true
+                                                },
+                                                {
+                                                    "id": 43,
+                                                    "relationIds": [
+                                                        44,
+                                                        48
+                                                    ],
+                                                    "name": "租赁场地",
+                                                    "state": "wait",
+                                                    "match": [
+                                                        "租赁",
+                                                        "B",
+                                                        "b"
+                                                    ],
+                                                    "isLeaf": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 7,
+                                            "name": "填表问题",
+                                            "state": "wait",
+                                            "type": "single",
+                                            "ask": "是否需要帮助您填写《酒类零售许可证申请表》，如有需要，请您回答我的14个问题哦！\n预览查看请点击http://can.xmduruo.com:4000/assets/templateDownload/liquor/template.pdf",
+                                            "answer": [
+                                                {
+                                                    "id": 8,
+                                                    "name": "不用填表",
+                                                    "state": "wait",
+                                                    "match": [
+                                                        "否"
+                                                    ],
+                                                    "isLeaf": true
+                                                },
+                                                {
+                                                    "id": 5000,
+                                                    "name": "需要填表",
+                                                    "state": "wait",
+                                                    "type": "multi",
+                                                    "match": [
+                                                        "是"
+                                                    ],
+                                                    "answer": [
+                                                        {
+                                                            "id": 5001,
+                                                            "name": "companyName",
+                                                            "state": "wait",
+                                                            "ask": "第1个问题：\n请问您单位名称是什么？",
+                                                            "type": "single",
+                                                            "answer": [
+                                                                {
+                                                                    "id": 5002,
+                                                                    "name": "占位节点",
+                                                                    "state": "wait",
+                                                                    "match": [],
+                                                                    "isLeaf": true
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 5007,
+                                                            "name": "legalRepresentName",
+                                                            "state": "wait",
+                                                            "ask": "第2个问题：\n贵单位法定代表人（负责人）姓名是？",
+                                                            "type": "single",
+                                                            "answer": [
+                                                                {
+                                                                    "id": 5004,
+                                                                    "name": "占位节点",
+                                                                    "state": "wait",
+                                                                    "match": [],
+                                                                    "isLeaf": true
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 5003,
+                                                            "name": "enterpriseType",
+                                                            "state": "wait",
+                                                            "ask": "第3个问题：\n请问您企业类型是什么（按工商营业执照填写）？",
+                                                            "type": "single",
+                                                            "answer": [
+                                                                {
+                                                                    "id": 5006,
+                                                                    "name": "占位节点",
+                                                                    "state": "wait",
+                                                                    "isLeaf": true,
+                                                                    "match": []
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 5005,
+                                                            "name": "enterpriseCategory",
+                                                            "state": "wait",
+                                                            "ask": "第4个问题：\n您营业执照上的企业分类是什么？\n只能从以下情形中选择：\n餐饮、烟杂店、超市、大卖场、百货商店、食品商店、便利店、三星级以上宾馆、二星级以下宾馆、酒吧、夜总会、其他。",
+                                                            "type": "single",
+                                                            "understand": [
+                                                                "请严格按照问题中的类型填写。",
+                                                                "要不您从上面粘贴一种符合您的类型？",
+                                                                "先休息休息，再来填写吧。"
+                                                            ],
+                                                            "answer": [
+                                                                {
+                                                                    "id": 5008,
+                                                                    "name": "占位节点",
+                                                                    "state": "wait",
+                                                                    "match": [
+                                                                        "餐饮",
+                                                                        "烟杂店",
+                                                                        "超市",
+                                                                        "大卖场",
+                                                                        "百货商店",
+                                                                        "食品商店",
+                                                                        "便利店",
+                                                                        "三星级以上宾馆",
+                                                                        "二星级以下宾馆",
+                                                                        "酒吧",
+                                                                        "夜总会",
+                                                                        "其他"
+                                                                    ],
+                                                                    "isLeaf": true
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 5017,
+                                                            "name": "businessAddress",
+                                                            "state": "wait",
+                                                            "ask": "第5个问题：\n贵单位经营地址是什么？",
+                                                            "type": "single",
+                                                            "answer": [
+                                                                {
+                                                                    "id": 5010,
+                                                                    "name": "占位节点",
+                                                                    "state": "wait",
+                                                                    "match": [],
+                                                                    "isLeaf": true
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 5011,
+                                                            "name": "streetName",
+                                                            "state": "wait",
+                                                            "ask": "第6个问题：\n贵单位所属街道是？",
+                                                            "type": "single",
+                                                            "answer": [
+                                                                {
+                                                                    "id": 5012,
+                                                                    "name": "占位节点",
+                                                                    "state": "wait",
+                                                                    "match": [],
+                                                                    "isLeaf": true
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 5019,
+                                                            "name": "businessArea",
+                                                            "state": "wait",
+                                                            "ask": "第7个问题：\n贵单位经营面积是多少平米？",
+                                                            "type": "single",
+                                                            "answer": [
+                                                                {
+                                                                    "id": 5014,
+                                                                    "name": "占位节点",
+                                                                    "state": "wait",
+                                                                    "match": [],
+                                                                    "isLeaf": true
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 5009,
+                                                            "name": "legalRepresentPhone",
+                                                            "state": "wait",
+                                                            "ask": "第8个问题：\n贵单位负责人联系电话、手机（提供一个号码即可）？",
+                                                            "type": "single",
+                                                            "answer": [
+                                                                {
+                                                                    "id": 5016,
+                                                                    "name": "占位节点",
+                                                                    "state": "wait",
+                                                                    "match": [],
+                                                                    "isLeaf": true
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 5015,
+                                                            "name": "staffNumber",
+                                                            "state": "wait",
+                                                            "ask": "第9个问题：\n贵单位员工人数是多少呢？",
+                                                            "type": "single",
+                                                            "answer": [
+                                                                {
+                                                                    "id": 5018,
+                                                                    "name": "占位节点",
+                                                                    "state": "wait",
+                                                                    "match": [],
+                                                                    "isLeaf": true
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 5013,
+                                                            "name": "faxNumber",
+                                                            "state": "wait",
+                                                            "ask": "第10个问题：\n贵单位传真是多少？",
+                                                            "type": "single",
+                                                            "answer": [
+                                                                {
+                                                                    "id": 5020,
+                                                                    "name": "占位节点",
+                                                                    "state": "wait",
+                                                                    "match": [],
+                                                                    "isLeaf": true
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 5021,
+                                                            "name": "businessLicenseValidity",
+                                                            "state": "wait",
+                                                            "ask": "第11个问题：\n请问您工商营业执照有效期至何时？（如2020.8.1）",
+                                                            "type": "single",
+                                                            "answer": [
+                                                                {
+                                                                    "id": 5022,
+                                                                    "name": "占位节点",
+                                                                    "state": "wait",
+                                                                    "match": [],
+                                                                    "isLeaf": true
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 5023,
+                                                            "name": "foodLicenseValidity",
+                                                            "state": "wait",
+                                                            "ask": "第12个问题：\n请问您食品经营许可证有效期至何时（如2018.1.1）",
+                                                            "type": "single",
+                                                            "answer": [
+                                                                {
+                                                                    "id": 5024,
+                                                                    "name": "占位节点",
+                                                                    "state": "wait",
+                                                                    "match": [],
+                                                                    "isLeaf": true
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 5025,
+                                                            "name": "transactorName",
+                                                            "state": "wait",
+                                                            "ask": "第13个问题：\n办理人姓名是？（办理人即为现场递交材料的人统一哦）",
+                                                            "type": "single",
+                                                            "answer": [
+                                                                {
+                                                                    "id": 5026,
+                                                                    "name": "占位节点",
+                                                                    "state": "wait",
+                                                                    "match": [],
+                                                                    "isLeaf": true
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": 5027,
+                                                            "name": "transactorPhone",
+                                                            "state": "wait",
+                                                            "ask": "第14个问题：\n办理人联系电话、手机号是多少（提供一个号码即可）",
+                                                            "type": "single",
+                                                            "answer": [
+                                                                {
+                                                                    "id": 5028,
+                                                                    "name": "占位节点",
+                                                                    "state": "wait",
+                                                                    "match": [],
+                                                                    "isLeaf": true
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 44,
+                                            "name": "答案回复（委托+自有）",
+                                            "state": "wait",
+                                            "type": "single",
+                                            "ask": "请您上传以下材料：\n1.营业执照 ；\n2.食品经营许可证；\n3.经营场地房产证；\n4.法人代表身份证明；\n5.告知承诺书\n6.《徐汇区酒类商品零售许可证申请表 》;\n7.委托书及委托人身份证明（身份证）。\n\n上传链接如下：http://can.xmduruo.com:4000/page/fileUp/liquorFileUp.html",
+                                            "answer": [
+                                                {
+                                                    "id": 45,
+                                                    "name": "上传",
+                                                    "state": "wait",
+                                                    "match": [],
+                                                    "isLeaf": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 46,
+                                            "name": "答案回复2（委托+租赁）",
+                                            "state": "wait",
+                                            "type": "single",
+                                            "ask": "您需要上传以下材料：\n1.营业执照 ；\n2.食品经营许可证；\n3.经营场地房产证；\n4.法人代表身份证明；\n5.告知承诺书\n6.《徐汇区酒类商品零售许可证申请表 》;\n7.委托书及委托人身份证明（身份证）;\n8.经营场地租赁协议。\n\n上传链接如下：http://can.xmduruo.com:4000/page/fileUp/liquorFileUp.html",
+                                            "answer": [
+                                                {
+                                                    "id": 47,
+                                                    "name": "上传",
+                                                    "state": "wait",
+                                                    "match": [],
+                                                    "isLeaf": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 48,
+                                            "name": "答案（自有）",
+                                            "state": "wait",
+                                            "type": "single",
+                                            "ask": "您需要上传以下材料：\n1.营业执照 ；\n2.食品经营许可证；\n3.经营场地房产证；\n4.法人代表身份证明；\n5.告知承诺书\n6.《徐汇区酒类商品零售许可证申请表 》。\n\n上传链接如下：http://can.xmduruo.com:4000/page/fileUp/liquorFileUp.html",
+                                            "answer": [
+                                                {
+                                                    "id": 49,
+                                                    "name": "上传",
+                                                    "state": "wait",
+                                                    "match": [],
+                                                    "isLeaf": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 50,
+                                            "name": "答案回复4（租赁）",
+                                            "state": "wait",
+                                            "type": "single",
+                                            "ask": "您需要上传以下材料：\n1.营业执照 ；\n2.食品经营许可证；\n3.经营场地房产证；\n4.法人代表身份证明；\n5.告知承诺书\n6.《徐汇区酒类商品零售许可证申请表 》;\n7.经营场地租赁协议。\n\n上传链接如下：http://can.xmduruo.com:4000/page/fileUp/liquorFileUp.html",
+                                            "answer": [
+                                                {
+                                                    "id": 51,
+                                                    "name": "上传",
+                                                    "state": "wait",
+                                                    "match": [],
+                                                    "isLeaf": true
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": 52,
+                                    "name": "变更",
+                                    "state": "wait",
+                                    "match": [
+                                        "B",
+                                        "变更",
+                                        "b"
+                                    ],
+                                    "isLeaf": true,
+                                    "finished": [
+                                        "这个事项我还在继续学习中呢。很遗憾，暂时还帮不了您。"
+                                    ]
+                                },
+                                {
+                                    "id": 53,
+                                    "name": "补证",
+                                    "state": "wait",
+                                    "match": [
+                                        "C",
+                                        "补证",
+                                        "c"
+                                    ],
+                                    "finished": [
+                                        "这个事项我还在继续学习中呢。很遗憾，暂时还帮不了您。"
+                                    ],
+                                    "isLeaf": true
+                                },
+                                {
+                                    "id": 54,
+                                    "name": "延续",
+                                    "state": "wait",
+                                    "match": [
+                                        "D",
+                                        "延续",
+                                        "d"
+                                    ],
+                                    "finished": [
+                                        "这个事项我还在继续学习中呢。很遗憾，暂时还帮不了您。"
+                                    ],
+                                    "isLeaf": true
+                                },
+                                {
+                                    "id": 55,
+                                    "name": "注销",
+                                    "state": "wait",
+                                    "match": [
+                                        "E",
+                                        "注销",
+                                        "e"
+                                    ],
+                                    "finished": [
+                                        "这个事项我还在继续学习中呢。很遗憾，暂时还帮不了您。"
+                                    ],
+                                    "isLeaf": true
+                                }
+                            ]
+                        },
+                        {
+                            "id": 56,
+                            "name": "否定办理酒类零售",
+                            "state": "wait",
+                            "match": [
+                                "否",
+                                "有了",
+                                "办了"
+                            ],
+                            "isLeaf": true,
+                            "finished": [
+                                "如果有需要，请您记得找我哦。祝您生活愉快！"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

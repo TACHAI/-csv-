@@ -19,7 +19,7 @@ public class Test01 {
         String temp=System.getProperty("user.dir")+"/src/main/resources/static/assets/file/temp.csv";
         String temp01=System.getProperty("user.dir")+"/src/main/resources/static/assets/file/temp01.csv";
 
-        add.addTime();
+//        add.addTime();
 
     }
 }

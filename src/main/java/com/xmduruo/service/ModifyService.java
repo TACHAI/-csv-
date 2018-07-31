@@ -13,6 +13,6 @@ import java.util.List;
  * @Email 1206966083@qq.com
  */
 public interface ModifyService {
-    public ServerResponse<String> addPath(String mp4Name,String csvName,String mp4Path,String csvPath);
+    ServerResponse<String> addPath(String mp4Name,String csvName,String mp4Path,String csvPath);
     ServerResponse<List<MoveAndCsv>> getAll();
 }

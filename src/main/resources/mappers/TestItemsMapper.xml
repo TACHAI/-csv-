@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmduruo.dao.TestItemsMapper" >
+  <resultMap id="BaseResultMap" type="com.xmduruo.po.TestItems" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="test_name" property="testName" jdbcType="VARCHAR" />
+    <result column="test_time" property="testTime" jdbcType="DATE" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="href" property="href" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, test_name, test_time, status,href
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from test_items
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from test_items
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xmduruo.po.TestItems" >
+    insert into test_items (id, test_name, test_time, 
+      status,href)
+    values (#{id,jdbcType=INTEGER}, #{testName,jdbcType=VARCHAR}, #{testTime,jdbcType=DATE}, 
+      #{status,jdbcType=VARCHAR},#{href,jdbcType=VARCHAR}))
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmduruo.po.TestItems" >
+    insert into test_items
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="testName != null" >
+        test_name,
+      </if>
+      <if test="testTime != null" >
+        test_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="href != null" >
+        href,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="testName != null" >
+        #{testName,jdbcType=VARCHAR},
+      </if>
+      <if test="testTime != null" >
+        #{testTime,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmduruo.po.TestItems" >
+    update test_items
+    <set >
+      <if test="testName != null" >
+        test_name = #{testName,jdbcType=VARCHAR},
+      </if>
+      <if test="testTime != null" >
+        test_time = #{testTime,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="href != null" >
+        href = #{href,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmduruo.po.TestItems" >
+    update test_items
+    set test_name = #{testName,jdbcType=VARCHAR},
+      test_time = #{testTime,jdbcType=DATE},
+      status = #{status,jdbcType=VARCHAR},
+      href = #{href,jdbcType=VARCHAR},
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="list" parameterType="map" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM test_items
+    <where>
+      <if test="testName !=null and testName !='' ">
+         and test_name LIKE "%"#{testName,jdbcType=VARCHAR}"%"
+      </if>
+    </where>
+  </select>
+</mapper>

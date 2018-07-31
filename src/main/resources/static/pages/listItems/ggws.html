@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+
+    <title>测试</title>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../../assets/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../../assets/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../../assets/css/animate.css" rel="stylesheet">
+    <link href="../../assets/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../../assets/css/style.css?v=4.1.0" rel="stylesheet">
+</head>
+<body class="gray-bg top-navigation">
+
+<div id="wrapper" >
+    <div id="page-wrapper" class="gray-bg">
+        <div class="wrapper wrapper-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>测试</h5>
+                            </div>
+
+                            <div class="ibox-content">
+                                <form name="公共卫生">
+                                    <div class="row">
+                                        <input placeholder="公共卫生流程" value="公共卫生流程" id="id00" disabled="">
+                                        <input placeholder="公共卫生许可怎么办" value="公共卫生许可怎么办" id="id0" >
+                                        <input placeholder="是" value="是" id="id1">
+                                        <input placeholder="A" value="A" id="id2">
+                                        <input placeholder="A" value="A" id="id3">
+                                        <input placeholder="A" value="A" id="id4">
+                                        <input placeholder="是" VALUE="是" id="id5">
+                                        <input placeholder="A" VALUE="A" id="id6">
+                                        <input placeholder="否" VALUE="否" id="id7">
+                                        <input placeholder="否" VALUE="否" id="id8">
+                                        <input placeholder="结束" value="结束" id="id9">
+                                        <button type="submit" id="button0" class="btn btn-primary btn-lg" >测试</button>
+                                    </div>
+                                </form>
+                            </div>
+                                <div class="content">
+                                    <textarea cols="160" rows="20" id="textContent"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 全局js -->
+<script src="../../assets/js/jquery.min.js?v=2.1.4"></script>
+<script src="../../assets/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="../../assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="../../assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../../assets/js/plugins/layer/layer.min.js"></script>
+<!-- 自定义js -->
+<!--<script src="./assets/js/content.js?v=1.0.0"></script>-->
+<script src="../../assets/js/hplus.js?v=4.1.0"></script>
+<script src="../../assets/js/myjs.js"></script>
+<!-- Bootstrap table -->
+<script src="../../assets/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../../assets/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../../assets/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+
+<!-- Peity -->
+<script src="../../assets/js/demo/bootstrap-table-demo.js"></script>
+
+</body>
+<script type="text/javascript">
+
+    //修改按钮点击事件
+    $("#button0").click(function () {
+        var fileName=document.getElementById("id00").value;
+
+        var str='';
+        for(var i=0;i<10; i++){
+            str +="-"+$("#id"+i).val();
+        }
+
+        $.ajax({
+            type:'post',
+            url:baseUrl+'/test/byCase',
+            data:{'fileName':fileName,'str':str},
+            dataType:'json',
+            success:function (data) {
+                console.info(data.data)
+                if(data.status==0){
+                    console.info("123123")
+                    $("#textContent").val(data.data);
+                }
+            },
+            error:function (data) {
+                console.info(data);
+                alert("发生了错误");
+            }
+        })
+        return false;
+    })
+
+</script>
+</html>
