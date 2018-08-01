@@ -8,8 +8,6 @@ import okhttp3.Response;
 
 import java.io.IOException;
 
-import static com.sun.xml.internal.ws.api.message.Packet.Status.Request;
-
 /**
  * Created by @Author tachai
  * date 2018/7/12 15:18

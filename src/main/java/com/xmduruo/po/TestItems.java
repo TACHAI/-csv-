@@ -45,12 +45,11 @@ public class TestItems {
         this.status = status == null ? null : status.trim();
     }
 
-
     public String getHref() {
         return href;
     }
 
     public void setHref(String href) {
-        this.href = href;
+        this.href = href == null ? null : href.trim();
     }
 }

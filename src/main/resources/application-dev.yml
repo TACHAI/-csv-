@@ -4,6 +4,14 @@ spring:
     username: root
     password: 778209
     url: jdbc:mysql://localhost:3306/mandc?characterEncoding=utf-8
+    dbcp2:
+      initial-size: 20
+      max-idle: 20
+      min-idle: 10
+      min-evictable-idle-time-millis: 3600000
+      default-auto-commit: true
+    tomcat:
+      max-active: 50
 #  jpa:
 #    show-sql: true
   jackson:
@@ -24,7 +32,7 @@ server:
 
 logging:
   level:
-    package com.laohu.dataobject.mapper: trace
+    package com.xmduruo.dao: info
 mybatis:
   typeAliasesPackage: com.xmduruo.po
   mapper-locations: classpath:mappers/*.xml

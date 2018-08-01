@@ -79,6 +79,17 @@
 			<artifactId>mybatis-generator-core</artifactId>
 			<version>1.3.2</version>
 		</dependency>
+		<!--mybaits 分页依赖-->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.miemiedev</groupId>
+			<artifactId>mybatis-paginator</artifactId>
+			<version>1.2.17</version>
+		</dependency>
 	</dependencies>
 
 	<build>
