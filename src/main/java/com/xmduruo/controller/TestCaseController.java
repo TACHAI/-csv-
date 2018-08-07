@@ -22,6 +22,8 @@ import java.util.List;
  *
  * @Email 1206966083@qq.com
  */
+//下面的跨域访问的注解
+@CrossOrigin(origins = "http://139.219.141.192:81",maxAge = 3600)
 @RestController
 @RequestMapping("/test/")
 public class TestCaseController {
@@ -42,9 +44,9 @@ public class TestCaseController {
             List<String> listStr = TestJson.testByTestCase(fileName,strs);
 
             if(listStr.get(listStr.size()-1).indexOf("祝您生活愉快")>-1){
-                testItems.setStatus("测试通过");
+                testItems.setStatus("成功");
             }else {
-                testItems.setStatus("测试失败");
+                testItems.setStatus("失败");
             }
             //更新数据
             testItemsMapper.updateByPrimaryKeySelective(testItems);
@@ -55,21 +57,23 @@ public class TestCaseController {
 
     @GetMapping("list")
     @ResponseBody
-    public ServerResponse<List<TestItems>> list(String testName){
-//        Page page = PageHelper.startPage(pageNumber,pageSize);
+//    ServerResponse<List<TestItems>>
+    public PageHelp list(String testName,Integer pageNumber,Integer pageSize){
+        Page page = PageHelper.startPage(pageNumber,pageSize);
 
         String name =URLDecoder.decode(testName);
-        System.out.println(name);
         List<TestItems> list = testItemsMapper.list(name);
         System.out.println("时间"+list.get(1).getTestTime().toString());
-        //        if(list!=null){
-//            Long total = page.getTotal();
-//            PageHelp pageHelper = new PageHelp();
-//            pageHelper.setTotal(total);
-//            pageHelper.setRows(list);
-//            return pageHelper;
-//        }
-        return listService.list(name);
+        if(list!=null){
+            Long total = page.getTotal();
+            System.out.println(total);
+            PageHelp pageHelper = new PageHelp();
+            pageHelper.setTotal(total);
+            pageHelper.setRows(list);
+            return pageHelper;
+        }
+//        return listService.list(name);
+        return null;
     }
 
     @PostMapping("add")

@@ -7,6 +7,7 @@ import com.xmduruo.po.MoveAndCsv;
 import com.xmduruo.service.ModifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,7 +17,8 @@ import java.util.List;
  *
  * @Email 1206966083@qq.com
  */
-@Service
+@Service("modifyService")
+@Transactional
 public class ModifyServiceImpl implements ModifyService {
     @Autowired
     private MoveAndCsvMapper moveAndCsvMapper;

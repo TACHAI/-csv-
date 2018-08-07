@@ -120,14 +120,14 @@
         $("#testItems").bootstrapTable({
             method: "get",  //使用get请求到服务器获取数据
             url: url,
-//            queryParams:function(params){
-//                return {
-//                    pageNumber:params.offset/params.limit+1,
-//                    pageSize:params.limit,
-//                };
-//            },
-//            pagination:true,
-//            sidePagination:"server",
+            queryParams:function(params){
+                return {
+                    pageNumber:params.offset/params.limit+1,
+                    pageSize:params.limit,
+                };
+            },
+            pagination:true,
+            sidePagination:"server",
         });
     }
 

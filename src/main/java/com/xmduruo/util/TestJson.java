@@ -114,14 +114,14 @@ public class TestJson {
 
         for(int i=0;i<str.length;i++){
             System.out.println(str[i]);
-            String str1 =testQuery(str[i])+"\n";
+            String str1 ="【"+i+"】"+testQuery(str[i])+"\n";
             System.out.println(str1);
 //            String str1 =testQuery(com.xmduruo.util.StringUtils.trim(str[i], '"'))+"\n";
             list.add(str1);
         }
 
-        WeChatParseJson.clearTask("oX5hwwLxeGMcvKcu-Qk9YMsDfpQQ",name);
         WeChatParseJson.clearSession("oX5hwwLxeGMcvKcu-Qk9YMsDfpQQ");
+        WeChatParseJson.clearTask("oX5hwwLxeGMcvKcu-Qk9YMsDfpQQ",name);
         if(list.size()<str.length){
             list.add("发生了错误");
         }
@@ -147,4 +147,20 @@ public class TestJson {
         return  result;
     }
 
+
+//    //发送query信息查询数据
+//    public static String testQuerydev(String fileName){
+//
+//        Query query = new Query();
+//        query.setQuery(fileName);
+//        query.setUserId("oX5hwwLxeGMcvKcu-Qk9YMsDfpQQ");
+//        String data = new Gson().toJson(query);
+//        String result = HttpUtil.okhttp(PropertiesUtil.getProperty("query.urldev"),data);
+//        JsonParser parser = new JsonParser();//创建json解析器
+//        //得到得到解析的值
+//        JsonObject jsonObject = (JsonObject) parser.parse(result);
+//        JsonObject jsonObject1 = (JsonObject) jsonObject.get("info");
+//        result = jsonObject1.get("ask").toString();
+//        return  result;
+//    }
 }

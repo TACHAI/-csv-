@@ -1,7 +1,5 @@
 package com.xmduruo;
 
-import com.xmduruo.util.AddCsvTime;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -15,7 +13,7 @@ import java.io.IOException;
  */
 public class Test01 {
     public static void main(String[] args) {
-          AddCsvTime add=new AddCsvTime();
+//          AddCsvTime add=new AddCsvTime();
         String temp=System.getProperty("user.dir")+"/src/main/resources/static/assets/file/temp.csv";
         String temp01=System.getProperty("user.dir")+"/src/main/resources/static/assets/file/temp01.csv";
 
